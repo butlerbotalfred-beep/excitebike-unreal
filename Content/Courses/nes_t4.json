@@ -1,0 +1,1258 @@
+{
+ "schema": "heatline.course/1",
+ "id": "nes-t4",
+ "name": "Course 4",
+ "source": {
+  "game": "Excitebike (NES, 1984)",
+  "track": 4,
+  "laps": 2,
+  "lapColumnsMain": 797,
+  "lapColumnsChallenge": 746,
+  "method": "decoded from public disassembly stream; positions checked against nesmaps.com"
+ },
+ "metersPerColumn": 1.25,
+ "laps": 2,
+ "lapLengthM": 996.25,
+ "segments": [
+  {
+   "id": "T4.O01",
+   "type": "PlatformDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 120.0,
+   "lengthM": 33.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$14",
+    "letter": "S",
+    "col": 96,
+    "widthCols": 27,
+    "runs": [
+     3,
+     4,
+     4
+    ]
+   },
+   "runs": [
+    3,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "T4.O02",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 172.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 138,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O03",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 182.5,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 146,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O04",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 187.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 150,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O05",
+   "type": "PlatformDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 202.5,
+   "lengthM": 33.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$14",
+    "letter": "S",
+    "col": 162,
+    "widthCols": 27,
+    "runs": [
+     3,
+     4,
+     4
+    ]
+   },
+   "runs": [
+    3,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "T4.O06",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 241.25,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 193,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O07",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 250.0,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 200,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O08",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 258.75,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 207,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O09",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 276.25,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 221,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O10",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 282.5,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 226,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O11",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 290.0,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 232,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O12",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 300.0,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 240,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O13",
+   "type": "CoolStrip",
+   "lanes": [
+    4
+   ],
+   "startM": 307.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$10",
+    "letter": "N",
+    "col": 246,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O14",
+   "type": "RampSteepFace",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 325.0,
+   "lengthM": 7.5,
+   "variant": "main",
+   "nes": {
+    "piece": "$0A",
+    "letter": "G",
+    "col": 260,
+    "widthCols": 6
+   }
+  },
+  {
+   "id": "T4.O15",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 347.5,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 278,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O16",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 356.25,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 285,
+    "widthCols": 12,
+    "runs": [
+     10
+    ]
+   },
+   "runs": [
+    10
+   ]
+  },
+  {
+   "id": "T4.O17",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 402.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 322,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O18",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 421.25,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 337,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O19",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 428.75,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 343,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O20",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 440.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 352,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O21",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 446.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 357,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O22",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 452.5,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 362,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O23",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 488.75,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 391,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O24",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 497.5,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 398,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O25",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 502.5,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 402,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O26",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 513.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 411,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O27",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 521.25,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 417,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O28",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 530.0,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 424,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O29",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 538.75,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 431,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O30",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 547.5,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 438,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O31",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 556.25,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 445,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T4.O32",
+   "type": "CoolStrip",
+   "lanes": [
+    1
+   ],
+   "startM": 603.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0F",
+    "letter": "M",
+    "col": 483,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O33",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 621.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 497,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O34",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 627.5,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 502,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O35",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 633.75,
+   "lengthM": 31.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$13",
+    "letter": "P",
+    "col": 507,
+    "widthCols": 25,
+    "runs": [
+     23
+    ]
+   },
+   "runs": [
+    23
+   ]
+  },
+  {
+   "id": "T4.O36",
+   "type": "Grass",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 672.5,
+   "lengthM": 31.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$12",
+    "letter": "O",
+    "col": 538,
+    "widthCols": 25,
+    "runs": [
+     23
+    ]
+   },
+   "runs": [
+    23
+   ]
+  },
+  {
+   "id": "T4.O37",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 707.5,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 566,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T4.O38",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 718.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 575,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T4.O39",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 732.5,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 586,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T4.O40",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 746.25,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 597,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T4.O41",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 760.0,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 608,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T4.O42",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 773.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 619,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T4.O43",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 787.5,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 630,
+    "widthCols": 12,
+    "runs": [
+     10
+    ]
+   },
+   "runs": [
+    10
+   ]
+  },
+  {
+   "id": "T4.O44",
+   "type": "CoolStrip",
+   "lanes": [
+    4
+   ],
+   "startM": 823.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$10",
+    "letter": "N",
+    "col": 659,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O45",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 843.75,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 675,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O46",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 855.0,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 684,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O47",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 870.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 696,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O48",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 876.25,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 701,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O49",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 895.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 716,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O50",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 905.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 724,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O51",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 916.25,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 733,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O52",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 922.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 738,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O53",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 935.0,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 748,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O54",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 945.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 756,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O55",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 953.75,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 763,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O56",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 966.25,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 773,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T4.O57",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 972.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 778,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T4.O58",
+   "type": "FinishDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 981.25,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$09",
+    "letter": "-",
+    "col": 785,
+    "widthCols": 12
+   }
+  }
+ ],
+ "combos": [
+  {
+   "segments": [
+    "T4.O06",
+    "T4.O07",
+    "T4.O08"
+   ],
+   "label": "rhythm section: B-B-B",
+   "id": "T4.C01"
+  },
+  {
+   "segments": [
+    "T4.O20",
+    "T4.O21",
+    "T4.O22"
+   ],
+   "label": "rhythm section: A-A-A",
+   "id": "T4.C02"
+  },
+  {
+   "segments": [
+    "T4.O27",
+    "T4.O28",
+    "T4.O29",
+    "T4.O30",
+    "T4.O31"
+   ],
+   "label": "rhythm section: E-E-E-E-E",
+   "id": "T4.C03"
+  },
+  {
+   "segments": [
+    "T4.O38",
+    "T4.O39",
+    "T4.O40",
+    "T4.O41",
+    "T4.O42"
+   ],
+   "label": "rhythm section: C-C-C-C-C",
+   "id": "T4.C04"
+  },
+  {
+   "segments": [
+    "T4.O15",
+    "T4.O16"
+   ],
+   "label": "jump the grass: B launches over full-width grass",
+   "id": "T4.C05"
+  },
+  {
+   "segments": [
+    "T4.O34",
+    "T4.O35"
+   ],
+   "label": "jump the grass: A launches over half-track grass",
+   "id": "T4.C06"
+  },
+  {
+   "segments": [
+    "T4.O35",
+    "T4.O36"
+   ],
+   "label": "grass chicane: forced lane swap",
+   "id": "T4.C07"
+  },
+  {
+   "segments": [
+    "T4.O42",
+    "T4.O43"
+   ],
+   "label": "jump the grass: C launches over full-width grass",
+   "id": "T4.C08"
+  },
+  {
+   "segments": [
+    "T4.O02",
+    "T4.O03",
+    "T4.O04"
+   ],
+   "label": "slalom: 3 mud/barrier pieces alternating lanes",
+   "id": "T4.C09"
+  },
+  {
+   "segments": [
+    "T4.O09",
+    "T4.O10",
+    "T4.O11",
+    "T4.O12"
+   ],
+   "label": "slalom: 4 mud/barrier pieces alternating lanes",
+   "id": "T4.C10"
+  },
+  {
+   "segments": [
+    "T4.O23",
+    "T4.O24",
+    "T4.O25"
+   ],
+   "label": "slalom: 3 mud/barrier pieces alternating lanes",
+   "id": "T4.C11"
+  },
+  {
+   "segments": [
+    "T4.O45",
+    "T4.O46",
+    "T4.O47",
+    "T4.O48",
+    "T4.O49",
+    "T4.O50",
+    "T4.O51",
+    "T4.O52",
+    "T4.O53",
+    "T4.O54",
+    "T4.O55",
+    "T4.O56"
+   ],
+   "label": "slalom: 12 mud/barrier pieces alternating lanes",
+   "id": "T4.C12"
+  }
+ ],
+ "markers": [
+  {
+   "col": 16,
+   "atM": 20.0,
+   "marker": "$30"
+  },
+  {
+   "col": 96,
+   "atM": 120.0,
+   "marker": "$31"
+  },
+  {
+   "col": 641,
+   "atM": 801.25,
+   "marker": "$30"
+  },
+  {
+   "col": 778,
+   "atM": 972.5,
+   "marker": "$31"
+  }
+ ],
+ "additions": [
+  {
+   "id": "T4.X01",
+   "type": "StartGrid",
+   "atM": 0.0,
+   "note": "modern start grid (two rows of four); NES starts all riders at column 0"
+  },
+  {
+   "id": "T4.X02",
+   "type": "RunOut",
+   "note": "modern run-out after the final finish line so bikes can slow down; not part of any lap"
+  }
+ ]
+}

@@ -1,0 +1,1111 @@
+{
+ "schema": "heatline.course/1",
+ "id": "nes-t5",
+ "name": "Course 5",
+ "source": {
+  "game": "Excitebike (NES, 1984)",
+  "track": 5,
+  "laps": 2,
+  "lapColumnsMain": 674,
+  "lapColumnsChallenge": 650,
+  "method": "decoded from public disassembly stream; positions checked against nesmaps.com"
+ },
+ "metersPerColumn": 1.25,
+ "laps": 2,
+ "lapLengthM": 842.5,
+ "segments": [
+  {
+   "id": "T5.O01",
+   "type": "CoolStrip",
+   "lanes": [
+    1
+   ],
+   "startM": 82.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0F",
+    "letter": "M",
+    "col": 66,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O02",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 103.75,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 83,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O03",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 117.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 94,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O04",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 122.5,
+   "lengthM": 20.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 98,
+    "widthCols": 16,
+    "runs": [
+     14
+    ]
+   },
+   "runs": [
+    14
+   ]
+  },
+  {
+   "id": "T5.O05",
+   "type": "RampSteepFace",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 145.0,
+   "lengthM": 7.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0A",
+    "letter": "G",
+    "col": 116,
+    "widthCols": 6
+   }
+  },
+  {
+   "id": "T5.O06",
+   "type": "Mountain",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 160.0,
+   "lengthM": 32.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$15",
+    "letter": "R",
+    "col": 128,
+    "widthCols": 26,
+    "runs": [
+     6,
+     6
+    ]
+   },
+   "runs": [
+    6,
+    6
+   ]
+  },
+  {
+   "id": "T5.O07",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 195.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 156,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O08",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 202.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 162,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O09",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 210.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 168,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O10",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 217.5,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 174,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O11",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 225.0,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 180,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O12",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 240.0,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 192,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O13",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 247.5,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 198,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O14",
+   "type": "CoolStrip",
+   "lanes": [
+    4
+   ],
+   "startM": 258.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$10",
+    "letter": "N",
+    "col": 207,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O15",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 282.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 226,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O16",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 310.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 248,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O17",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 338.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 271,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O18",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 365.0,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 292,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O19",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 381.25,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 305,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O20",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 398.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 319,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O21",
+   "type": "RampSteepBack",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 415.0,
+   "lengthM": 7.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$06",
+    "letter": "F",
+    "col": 332,
+    "widthCols": 6
+   }
+  },
+  {
+   "id": "T5.O22",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 425.0,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 340,
+    "widthCols": 12,
+    "runs": [
+     10
+    ]
+   },
+   "runs": [
+    10
+   ]
+  },
+  {
+   "id": "T5.O23",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 446.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 357,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O24",
+   "type": "PlatformDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 453.75,
+   "lengthM": 33.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$14",
+    "letter": "S",
+    "col": 363,
+    "widthCols": 27,
+    "runs": [
+     3,
+     4,
+     4
+    ]
+   },
+   "runs": [
+    3,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "T5.O25",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 495.0,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 396,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T5.O26",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 505.0,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 404,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O27",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 511.25,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 409,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O28",
+   "type": "RampSteepFace",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 542.5,
+   "lengthM": 7.5,
+   "variant": "main",
+   "nes": {
+    "piece": "$0A",
+    "letter": "G",
+    "col": 434,
+    "widthCols": 6
+   }
+  },
+  {
+   "id": "T5.O29",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 553.75,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 443,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T5.O30",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 558.75,
+   "lengthM": 8.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 447,
+    "widthCols": 7,
+    "runs": [
+     5
+    ]
+   },
+   "runs": [
+    5
+   ]
+  },
+  {
+   "id": "T5.O31",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 570.0,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 456,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T5.O32",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 583.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 467,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O33",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 597.5,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 478,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O34",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 611.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 489,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O35",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 617.5,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 494,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O36",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 631.25,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 505,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O37",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 645.0,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 516,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O38",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 658.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 527,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O39",
+   "type": "RampLarge",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 672.5,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$05",
+    "letter": "C",
+    "col": 538,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T5.O40",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 725.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 580,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O41",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 733.75,
+   "lengthM": 1.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 587,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O42",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 740.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 592,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O43",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 748.75,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 599,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O44",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 760.0,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 608,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O45",
+   "type": "Barrier",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 766.25,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$03",
+    "letter": "-",
+    "col": 613,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O46",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 773.75,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 619,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O47",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 780.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 624,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O48",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 791.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 633,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O49",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 798.75,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 639,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O50",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 808.75,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 647,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T5.O51",
+   "type": "Barrier",
+   "lanes": [
+    3,
+    4
+   ],
+   "startM": 820.0,
+   "lengthM": 1.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$04",
+    "letter": "J",
+    "col": 656,
+    "widthCols": 1
+   }
+  },
+  {
+   "id": "T5.O52",
+   "type": "FinishDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 827.5,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$09",
+    "letter": "-",
+    "col": 662,
+    "widthCols": 12
+   }
+  }
+ ],
+ "combos": [
+  {
+   "segments": [
+    "T5.O06",
+    "T5.O07",
+    "T5.O08",
+    "T5.O09",
+    "T5.O10",
+    "T5.O11"
+   ],
+   "label": "rhythm section: R-A-A-A-A-A",
+   "id": "T5.C01"
+  },
+  {
+   "segments": [
+    "T5.O28",
+    "T5.O29"
+   ],
+   "label": "double: G-H",
+   "id": "T5.C02"
+  },
+  {
+   "segments": [
+    "T5.O32",
+    "T5.O33",
+    "T5.O34",
+    "T5.O35",
+    "T5.O36",
+    "T5.O37",
+    "T5.O38",
+    "T5.O39"
+   ],
+   "label": "rhythm section: D-D-A-D-D-D-D-C",
+   "id": "T5.C03"
+  },
+  {
+   "segments": [
+    "T5.O03",
+    "T5.O04"
+   ],
+   "label": "jump the grass: H launches over full-width grass",
+   "id": "T5.C04"
+  },
+  {
+   "segments": [
+    "T5.O21",
+    "T5.O22"
+   ],
+   "label": "jump the grass: F launches over full-width grass",
+   "id": "T5.C05"
+  },
+  {
+   "segments": [
+    "T5.O29",
+    "T5.O30"
+   ],
+   "label": "jump the grass: H launches over full-width grass",
+   "id": "T5.C06"
+  },
+  {
+   "segments": [
+    "T5.O40",
+    "T5.O41",
+    "T5.O42",
+    "T5.O43",
+    "T5.O44",
+    "T5.O45",
+    "T5.O46",
+    "T5.O47",
+    "T5.O48",
+    "T5.O49",
+    "T5.O50",
+    "T5.O51"
+   ],
+   "label": "slalom: 12 mud/barrier pieces alternating lanes",
+   "id": "T5.C07"
+  }
+ ],
+ "markers": [
+  {
+   "col": 16,
+   "atM": 20.0,
+   "marker": "$30"
+  },
+  {
+   "col": 94,
+   "atM": 117.5,
+   "marker": "$31"
+  },
+  {
+   "col": 580,
+   "atM": 725.0,
+   "marker": "$30"
+  },
+  {
+   "col": 662,
+   "atM": 827.5,
+   "marker": "$31"
+  }
+ ],
+ "additions": [
+  {
+   "id": "T5.X01",
+   "type": "StartGrid",
+   "atM": 0.0,
+   "note": "modern start grid (two rows of four); NES starts all riders at column 0"
+  },
+  {
+   "id": "T5.X02",
+   "type": "RunOut",
+   "note": "modern run-out after the final finish line so bikes can slow down; not part of any lap"
+  }
+ ]
+}

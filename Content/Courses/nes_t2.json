@@ -1,0 +1,719 @@
+{
+ "schema": "heatline.course/1",
+ "id": "nes-t2",
+ "name": "Course 2",
+ "source": {
+  "game": "Excitebike (NES, 1984)",
+  "track": 2,
+  "laps": 2,
+  "lapColumnsMain": 638,
+  "lapColumnsChallenge": 604,
+  "method": "decoded from public disassembly stream; positions checked against nesmaps.com"
+ },
+ "metersPerColumn": 1.25,
+ "laps": 2,
+ "lapLengthM": 797.5,
+ "segments": [
+  {
+   "id": "T2.O01",
+   "type": "Mountain",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 82.5,
+   "lengthM": 32.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$15",
+    "letter": "R",
+    "col": 66,
+    "widthCols": 26,
+    "runs": [
+     6,
+     6
+    ]
+   },
+   "runs": [
+    6,
+    6
+   ]
+  },
+  {
+   "id": "T2.O02",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 127.5,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 102,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O03",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 141.25,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 113,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O04",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 157.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 126,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O05",
+   "type": "Mountain",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 175.0,
+   "lengthM": 32.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$15",
+    "letter": "R",
+    "col": 140,
+    "widthCols": 26,
+    "runs": [
+     6,
+     6
+    ]
+   },
+   "runs": [
+    6,
+    6
+   ]
+  },
+  {
+   "id": "T2.O06",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 211.25,
+   "lengthM": 6.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 169,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O07",
+   "type": "CoolStrip",
+   "lanes": [
+    1
+   ],
+   "startM": 232.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0F",
+    "letter": "M",
+    "col": 186,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T2.O08",
+   "type": "CoolStrip",
+   "lanes": [
+    4
+   ],
+   "startM": 237.5,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$10",
+    "letter": "N",
+    "col": 190,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T2.O09",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 258.75,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 207,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O10",
+   "type": "RampMedium",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 278.75,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$07",
+    "letter": "B",
+    "col": 223,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O11",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 332.5,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 266,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O12",
+   "type": "RampSteep",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 338.75,
+   "lengthM": 6.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$0B",
+    "letter": "E",
+    "col": 271,
+    "widthCols": 5
+   }
+  },
+  {
+   "id": "T2.O13",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 347.5,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 278,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O14",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 396.25,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 317,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T2.O15",
+   "type": "RampSmall",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 401.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$08",
+    "letter": "A",
+    "col": 321,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O16",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 407.5,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 326,
+    "widthCols": 12,
+    "runs": [
+     10
+    ]
+   },
+   "runs": [
+    10
+   ]
+  },
+  {
+   "id": "T2.O17",
+   "type": "Kicker",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 425.0,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$0E",
+    "letter": "H",
+    "col": 340,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T2.O18",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 430.0,
+   "lengthM": 20.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$11",
+    "letter": "Q",
+    "col": 344,
+    "widthCols": 16,
+    "runs": [
+     14
+    ]
+   },
+   "runs": [
+    14
+   ]
+  },
+  {
+   "id": "T2.O19",
+   "type": "CoolStrip",
+   "lanes": [
+    4
+   ],
+   "startM": 476.25,
+   "lengthM": 2.5,
+   "variant": "both",
+   "nes": {
+    "piece": "$10",
+    "letter": "N",
+    "col": 381,
+    "widthCols": 2
+   }
+  },
+  {
+   "id": "T2.O20",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 486.25,
+   "lengthM": 11.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 389,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O21",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 500.0,
+   "lengthM": 11.25,
+   "variant": "main",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 400,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O22",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 513.75,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 411,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O23",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 527.5,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 422,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O24",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 541.25,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 433,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O25",
+   "type": "TableLow",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 555.0,
+   "lengthM": 11.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$01",
+    "letter": "D",
+    "col": 444,
+    "widthCols": 9
+   }
+  },
+  {
+   "id": "T2.O26",
+   "type": "Grass",
+   "lanes": [
+    1,
+    2
+   ],
+   "startM": 595.0,
+   "lengthM": 71.25,
+   "variant": "both",
+   "nes": {
+    "piece": "$13",
+    "letter": "P",
+    "col": 476,
+    "widthCols": 57,
+    "runs": [
+     55
+    ]
+   },
+   "runs": [
+    55
+   ]
+  },
+  {
+   "id": "T2.O27",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 705.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 564,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O28",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 726.25,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 581,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O29",
+   "type": "Mud",
+   "lanes": [
+    2,
+    4
+   ],
+   "startM": 735.0,
+   "lengthM": 3.75,
+   "variant": "main",
+   "nes": {
+    "piece": "$0D",
+    "letter": "L",
+    "col": 588,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O30",
+   "type": "Mud",
+   "lanes": [
+    1,
+    3
+   ],
+   "startM": 745.0,
+   "lengthM": 3.75,
+   "variant": "both",
+   "nes": {
+    "piece": "$0C",
+    "letter": "K",
+    "col": 596,
+    "widthCols": 3
+   }
+  },
+  {
+   "id": "T2.O31",
+   "type": "FinishDeck",
+   "lanes": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "startM": 782.5,
+   "lengthM": 15.0,
+   "variant": "both",
+   "nes": {
+    "piece": "$09",
+    "letter": "-",
+    "col": 626,
+    "widthCols": 12
+   }
+  }
+ ],
+ "combos": [
+  {
+   "segments": [
+    "T2.O05",
+    "T2.O06"
+   ],
+   "label": "double: R-B",
+   "id": "T2.C01"
+  },
+  {
+   "segments": [
+    "T2.O11",
+    "T2.O12",
+    "T2.O13"
+   ],
+   "label": "rhythm section: A-E-A",
+   "id": "T2.C02"
+  },
+  {
+   "segments": [
+    "T2.O14",
+    "T2.O15"
+   ],
+   "label": "double: H-A",
+   "id": "T2.C03"
+  },
+  {
+   "segments": [
+    "T2.O20",
+    "T2.O21",
+    "T2.O22",
+    "T2.O23",
+    "T2.O24",
+    "T2.O25"
+   ],
+   "label": "rhythm section: D-D-D-D-D-D",
+   "id": "T2.C04"
+  },
+  {
+   "segments": [
+    "T2.O15",
+    "T2.O16"
+   ],
+   "label": "jump the grass: A launches over full-width grass",
+   "id": "T2.C05"
+  },
+  {
+   "segments": [
+    "T2.O17",
+    "T2.O18"
+   ],
+   "label": "jump the grass: H launches over full-width grass",
+   "id": "T2.C06"
+  },
+  {
+   "segments": [
+    "T2.O28",
+    "T2.O29",
+    "T2.O30"
+   ],
+   "label": "slalom: 3 mud/barrier pieces alternating lanes",
+   "id": "T2.C07"
+  }
+ ],
+ "markers": [
+  {
+   "col": 15,
+   "atM": 18.75,
+   "marker": "$30"
+  },
+  {
+   "col": 66,
+   "atM": 82.5,
+   "marker": "$31"
+  },
+  {
+   "col": 476,
+   "atM": 595.0,
+   "marker": "$30"
+  },
+  {
+   "col": 626,
+   "atM": 782.5,
+   "marker": "$31"
+  }
+ ],
+ "additions": [
+  {
+   "id": "T2.X01",
+   "type": "StartGrid",
+   "atM": 0.0,
+   "note": "modern start grid (two rows of four); NES starts all riders at column 0"
+  },
+  {
+   "id": "T2.X02",
+   "type": "RunOut",
+   "note": "modern run-out after the final finish line so bikes can slow down; not part of any lap"
+  }
+ ]
+}
