@@ -163,12 +163,20 @@ speed boosts; difficulty only changes skill:
 
 | | Easy | Medium | Hard |
 |---|---|---|---|
-| Reaction delay | 0.35 s | 0.2 s | 0.1 s |
-| Landing angle error (σ) | 14° | 7° | 3° |
-| Heat management | turbo off at 60 %, back on at 35 % | 80 % / 65 % | 94 % / 90 %, plans cool strips |
-| Lane planning horizon | 25 m | 45 m | 70 m |
-| Air plans (rollouts) | no, just lines up | yes | yes |
+| Reaction delay | 0.45 s | 0.25 s | 0.1 s |
+| Landing angle error (σ) | 16° | 10° | 3° |
+| Heat management | turbo off at 65 %, back on at 40 % after at least 4.5 s | 78 % / 56 % | 94 % / 90 %, plans cool strips |
+| Lets go of everything in the air (cools the engine) | never | 10 % of jumps | every jump |
+| Lane planning horizon | 20 m | 45 m | 70 m |
+| Air plans (rollouts) | no, just lines up | 20 % of jumps | every jump |
 | Recovery mash rate | 4/s | 7/s | 10/s |
+
+Easy and Medium are meant to look like people riding. They use turbo in visible bursts, and through a jump
+they keep holding what they held at take-off, so a burst goes on heating the engine in the air. They
+sometimes overheat. Letting go in every jump is an expert NES trick; before 2026-09-27 every level used it,
+and a player reported that the AI "used turbo nonstop without overheating". Only Hard keeps it. The levels
+are calibrated against player styles (TUNING.md, "AI"): Easy is slower than a new player who never
+overheats, and Medium slightly slower than a casual one.
 
 AI rivals come in two personalities, like the NES: **cruisers** hold good lines, while **chasers**
 target the nearest human and try to cut in ahead of them (only at Medium and Hard).

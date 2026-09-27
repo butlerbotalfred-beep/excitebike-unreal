@@ -69,6 +69,67 @@ namespace
 		}
 		return true;
 	}
+
+	/** Turbo from the heat gauge: press up to the rider's limit, then rest until it has cooled by the resume margin. */
+	bool WantsTurbo(const FMXBikeState& St, FMXAIMemory& Mem, const FMXTrackModel& Track, const FMXAISkill& Skill,
+		bool bOverTarget, float Dt)
+	{
+		const float V = St.ForwardSpeed();
+		float HeatLimit = Skill.TurboHeatLimit;
+		if (Skill.bPlansCoolStrips)
+		{
+			// Push harder when a cool strip in the planned lane is coming up soon.
+			TArray<const FMXPlacedPiece*> Ahead;
+			Track.PiecesInRange(St.S, St.S + FMath::Max(20.f, V * 2.5f), Ahead);
+			for (const FMXPlacedPiece* P : Ahead)
+			{
+				for (const FMXSurfaceSpan& Span : P->Geo.Surfaces)
+				{
+					if (Span.Surface == EMXSurface::Cool && MX::LaneInMask(Span.LaneMask, Mem.PlanLane))
+					{
+						HeatLimit = 96.f;
+					}
+				}
+			}
+		}
+		Mem.TurboRestTimer = FMath::Max(0.f, Mem.TurboRestTimer - Dt);
+		if (St.Heat >= HeatLimit)
+		{
+			if (!Mem.bTurboCooling)
+			{
+				Mem.TurboRestTimer = Skill.TurboMinRest;
+			}
+			Mem.bTurboCooling = true;
+		}
+		else if (St.Heat < HeatLimit - Skill.TurboResumeMargin && Mem.TurboRestTimer <= 0.f)
+		{
+			Mem.bTurboCooling = false;
+		}
+		bool bTurbo = !bOverTarget && !Mem.bTurboCooling && St.Heat < HeatLimit;
+		if (Mem.Strategy == 2)
+		{
+			bTurbo = false;
+		}
+		else if (Mem.Strategy == 1)
+		{
+			bTurbo = St.Heat < 92.f;
+		}
+		else if (Mem.Strategy >= 3)
+		{
+			bTurbo = Mem.Strategy == 3;
+		}
+		// Sloppier riders sometimes get greedy and ride turbo into the red (they can overheat).
+		if (!Mem.bAutopilot && Mem.GreedyTimer <= 0.f && Mem.Rng.FRand() < Skill.GreedyTurboRate * Dt)
+		{
+			Mem.GreedyTimer = 6.f;
+		}
+		if (Mem.GreedyTimer > 0.f)
+		{
+			Mem.GreedyTimer -= Dt;
+			bTurbo = !bOverTarget;
+		}
+		return bTurbo;
+	}
 }
 
 float FMXAIBrain::LaneCost(int32 Lane, const FMXBikeState& St, const FMXTrackModel& Track, const UMXBikeTuning& T,
@@ -298,56 +359,7 @@ FMXBikeInput FMXAIBrain::Think(const FMXBikeState& St, FMXAIMemory& Mem, const F
 
 		const bool bOverTarget = V > Mem.TargetSpeed + 0.5f || bEaseOff;
 		In.Throttle = bOverTarget ? 0.f : 1.f;
-
-		float HeatLimit = Skill.TurboHeatLimit;
-		if (Skill.bPlansCoolStrips)
-		{
-			// Push harder when a cool strip in the planned lane is coming up soon.
-			TArray<const FMXPlacedPiece*> Ahead;
-			Track.PiecesInRange(St.S, St.S + FMath::Max(20.f, V * 2.5f), Ahead);
-			for (const FMXPlacedPiece* P : Ahead)
-			{
-				for (const FMXSurfaceSpan& Span : P->Geo.Surfaces)
-				{
-					if (Span.Surface == EMXSurface::Cool && MX::LaneInMask(Span.LaneMask, Mem.PlanLane))
-					{
-						HeatLimit = 96.f;
-					}
-				}
-			}
-		}
-		if (St.Heat >= HeatLimit)
-		{
-			Mem.bTurboCooling = true;
-		}
-		else if (St.Heat < HeatLimit - Skill.TurboResumeMargin)
-		{
-			Mem.bTurboCooling = false;
-		}
-		bool bTurbo = !bOverTarget && !Mem.bTurboCooling && St.Heat < HeatLimit;
-		if (Mem.Strategy == 2)
-		{
-			bTurbo = false;
-		}
-		else if (Mem.Strategy == 1)
-		{
-			bTurbo = St.Heat < 92.f;
-		}
-		else if (Mem.Strategy >= 3)
-		{
-			bTurbo = Mem.Strategy == 3;
-		}
-		// Sloppier riders sometimes get greedy and ride turbo into the red (they can overheat).
-		if (!Mem.bAutopilot && Mem.GreedyTimer <= 0.f && Mem.Rng.FRand() < Skill.GreedyTurboRate * Dt)
-		{
-			Mem.GreedyTimer = 6.f;
-		}
-		if (Mem.GreedyTimer > 0.f)
-		{
-			Mem.GreedyTimer -= Dt;
-			bTurbo = !bOverTarget;
-		}
-		In.bTurbo = bTurbo;
+		In.bTurbo = WantsTurbo(St, Mem, Track, Skill, bOverTarget, Dt);
 
 		// Barriers: wheelie over them (or slow down if the rider can't).
 		// The lane being moved into counts too.
@@ -385,16 +397,21 @@ FMXBikeInput FMXAIBrain::Think(const FMXBikeState& St, FMXAIMemory& Mem, const F
 	}
 
 	// ---- Airborne ----
-	In.Throttle = 0.f; // coast in the air: heat drops (NES riders did the same)
-	In.bTurbo = false;
 	if (!Mem.bWasAirborne)
 	{
 		Mem.Flight = FMXFlightControl();
 		const float G = (Mem.Rng.FRand() + Mem.Rng.FRand() + Mem.Rng.FRand() - 1.5f) * 1.4f; // ~N(0,1)
 		Mem.Flight.LandingError = Mem.bAutopilot ? 0.f : G * Skill.LandingErrorDeg;
-		Mem.Flight.Strategy = (Skill.bUsesFlightControl && !St.bBounce) ? ChooseAirInput(St, Track, T, Skill) : 0.f;
+		const bool bPlansJump = Skill.bUsesFlightControl && !St.bBounce && (Mem.bAutopilot || Mem.Rng.FRand() < Skill.FlightPlanChance);
+		Mem.Flight.Strategy = bPlansJump ? ChooseAirInput(St, Track, T, Skill) : 0.f;
+		Mem.bAirCoast = Mem.bAutopilot || Mem.Rng.FRand() < Skill.AirCoastChance;
 	}
 	Mem.bWasAirborne = true;
+	// Off the gas in the air, the engine cools (NES; the TAS uses every jump this way). Riders who don't know the
+	// trick keep holding the gas, and turbo while they're in a burst, which keeps heating the engine.
+	const bool bWantsTurbo = WantsTurbo(St, Mem, Track, Skill, false, Dt); // keeps the gauge-reading state ticking
+	In.Throttle = Mem.bAirCoast ? 0.f : 1.f;
+	In.bTurbo = !Mem.bAirCoast && bWantsTurbo;
 	In.Pitch = FlightInput(St, Mem.Flight, Track, T, Skill.ReactionDelay, Dt);
 	return In;
 }

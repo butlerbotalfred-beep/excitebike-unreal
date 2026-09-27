@@ -5,6 +5,9 @@
 #   run.sh             automation-test equivalents + NES course validation, AI runs and drive tests
 #   run.sh ai [N] [trace]              N-seed AI benchmark per course/layout/difficulty (default 8)
 #   run.sh trace C V D SEED S0 S1      step trace of one AI run (course 1-5, variant 0/1, difficulty 0-2)
+#   run.sh human [N]                   player styles (novice / casual / good) vs each AI level: time, turbo use, overheats
+#   run.sh pack [N]                    8-bike AI races with contact
+#   run.sh choices                     is managing turbo faster than holding it or never using it?
 # This does not replace the UE automation tests; it exists so the simulation can be checked without the editor.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"

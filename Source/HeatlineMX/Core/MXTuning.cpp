@@ -38,17 +38,17 @@ const FMXCameraShapeTuning& UMXCameraTuning::ForShape(EMXViewShape Shape) const
 
 UMXAITuning::UMXAITuning()
 {
-	Easy.ReactionDelay = 0.35f; Easy.LandingErrorDeg = 14.f; Easy.TurboHeatLimit = 60.f; Easy.TurboResumeMargin = 25.f; Easy.bPlansCoolStrips = false;
-	Easy.LaneHorizon = 25.f; Easy.bUsesFlightControl = false; Easy.MashRate = 4.f;
-	Easy.MistakeRate = 0.12f; Easy.bChasersAllowed = false; Easy.GreedyTurboRate = 0.03f;
+	Easy.ReactionDelay = 0.45f; Easy.LandingErrorDeg = 16.f; Easy.TurboHeatLimit = 65.f; Easy.TurboResumeMargin = 25.f; Easy.TurboMinRest = 4.5f; Easy.bPlansCoolStrips = false;
+	Easy.LaneHorizon = 20.f; Easy.bUsesFlightControl = false; Easy.MashRate = 4.f;
+	Easy.MistakeRate = 0.15f; Easy.bChasersAllowed = false; Easy.GreedyTurboRate = 0.007f; Easy.AirCoastChance = 0.f;
 
-	Medium.ReactionDelay = 0.2f; Medium.LandingErrorDeg = 7.f; Medium.TurboHeatLimit = 80.f; Medium.TurboResumeMargin = 15.f; Medium.bPlansCoolStrips = false;
-	Medium.LaneHorizon = 45.f; Medium.bUsesFlightControl = true; Medium.MashRate = 7.f;
-	Medium.MistakeRate = 0.05f; Medium.bChasersAllowed = true; Medium.GreedyTurboRate = 0.01f;
+	Medium.ReactionDelay = 0.25f; Medium.LandingErrorDeg = 10.f; Medium.TurboHeatLimit = 78.f; Medium.TurboResumeMargin = 22.f; Medium.bPlansCoolStrips = false;
+	Medium.LaneHorizon = 45.f; Medium.bUsesFlightControl = true; Medium.FlightPlanChance = 0.2f; Medium.MashRate = 7.f;
+	Medium.MistakeRate = 0.05f; Medium.bChasersAllowed = true; Medium.GreedyTurboRate = 0.004f; Medium.AirCoastChance = 0.1f;
 
 	Hard.ReactionDelay = 0.1f; Hard.LandingErrorDeg = 3.f; Hard.TurboHeatLimit = 94.f; Hard.TurboResumeMargin = 4.f; Hard.bPlansCoolStrips = true;
 	Hard.LaneHorizon = 70.f; Hard.bUsesFlightControl = true; Hard.MashRate = 10.f;
-	Hard.MistakeRate = 0.015f; Hard.bChasersAllowed = true; Hard.GreedyTurboRate = 0.001f;
+	Hard.MistakeRate = 0.015f; Hard.bChasersAllowed = true; Hard.GreedyTurboRate = 0.001f; Hard.AirCoastChance = 1.f;
 }
 
 const FMXAISkill& UMXAITuning::ForDifficulty(EMXAIDifficulty D) const

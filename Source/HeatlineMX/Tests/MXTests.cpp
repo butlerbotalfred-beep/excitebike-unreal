@@ -504,4 +504,76 @@ bool FMXAITest::RunTest(const FString& Parameters)
 	return true;
 }
 
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMXAITurboTest, "HeatlineMX.AI.TurboLikeAPerson", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+bool FMXAITurboTest::RunTest(const FString& Parameters)
+{
+	// Easy and Medium riders read the heat gauge the way people do: turbo in bursts, and they (almost) never let
+	// off the gas in the air to cool the engine. Only Hard uses that expert trick on every jump.
+	const UMXBikeTuning& T = MXTuning::Bike();
+	const TArray<FMXAIOtherBike> None;
+	for (int32 Diff = 0; Diff < 3; ++Diff)
+	{
+		const FMXAISkill& Skill = MXTuning::AI().ForDifficulty((EMXAIDifficulty)Diff);
+		float Ground = 0.f, TurboGround = 0.f, Air = 0.f, CoastAir = 0.f;
+		int32 Overheats = 0;
+		for (int32 Course = 1; Course <= 5; ++Course)
+		{
+			FMXTrackDefinition D;
+			FString Err;
+			if (!MXTrackIO::LoadFile(FPaths::ProjectContentDir() / FString::Printf(TEXT("Courses/nes_t%d.json"), Course), D, Err))
+			{
+				AddError(Err);
+				return false;
+			}
+			FMXTrackModel M;
+			M.Build(D, EMXLayoutVariant::Main, D.Laps, MXTuning::Style());
+			for (int32 Seed = 0; Seed < 2; ++Seed)
+			{
+				FMXBikeState St;
+				FMXBikeSim::Spawn(St, -2.f, M.LaneCenterY(Seed), M);
+				FMXAIMemory Mem;
+				Mem.Init(300 + Course * 10 + Seed, false);
+				float Time = 0.f;
+				while (St.S < M.RaceFinishS() && Time < 300.f)
+				{
+					const FMXBikeInput In = FMXAIBrain::Think(St, Mem, M, T, Skill, None, FMXBikeSim::FixedDt);
+					if (St.Phase == EMXBikePhase::Grounded)
+					{
+						Ground += FMXBikeSim::FixedDt;
+						TurboGround += In.bTurbo ? FMXBikeSim::FixedDt : 0.f;
+					}
+					else if (St.Phase == EMXBikePhase::Airborne)
+					{
+						Air += FMXBikeSim::FixedDt;
+						CoastAir += In.Throttle < 0.1f ? FMXBikeSim::FixedDt : 0.f;
+					}
+					FMXBikeSim::Step(St, In, M, T, FMXBikeSim::FixedDt, false);
+					Time += FMXBikeSim::FixedDt;
+				}
+				Overheats += St.Overheats;
+			}
+		}
+		const float TurboShare = TurboGround / FMath::Max(0.01f, Ground);
+		const float CoastShare = CoastAir / FMath::Max(0.01f, Air);
+		AddInfo(FString::Printf(TEXT("AI %d: turbo on %.0f%% of ground time, off the gas %.0f%% of air time, %d overheats in 10 races"),
+			Diff, TurboShare * 100.f, CoastShare * 100.f, Overheats));
+		if (Diff == 0)
+		{
+			TestTrue(TEXT("easy AI uses turbo in bursts"), TurboShare < 0.55f);
+			TestTrue(TEXT("easy AI keeps the gas on in the air"), CoastShare < 0.01f);
+			TestTrue(TEXT("easy AI overheats sometimes"), Overheats > 0);
+		}
+		else if (Diff == 1)
+		{
+			TestTrue(TEXT("medium AI uses turbo in bursts"), TurboShare < 0.7f);
+			TestTrue(TEXT("medium AI rarely cools in the air"), CoastShare < 0.3f);
+		}
+		else
+		{
+			TestTrue(TEXT("hard AI cools in every jump"), CoastShare > 0.9f);
+		}
+	}
+	return true;
+}
+
 #endif // WITH_DEV_AUTOMATION_TESTS

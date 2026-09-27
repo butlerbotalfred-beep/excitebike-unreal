@@ -50,8 +50,12 @@ public:
 private:
 	void OnAccelerateStarted();
 	void OnPausePressed();
+	/** Menus show the cursor; a race hides it while it rests over the game, and any movement brings it back. */
+	void UpdateMouseCursor(float DeltaTime);
 
 	FMXControlProfile Profile;
+	FVector2D LastMousePos = FVector2D::ZeroVector;
+	float MouseIdleTime = 0.f;
 	UPROPERTY() TObjectPtr<UInputMappingContext> Context;
 };
 

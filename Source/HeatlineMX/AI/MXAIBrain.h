@@ -50,7 +50,11 @@ struct HEATLINEMX_API FMXAIMemory
 	float WheelieHold = 0.f;
 	/** Turbo hysteresis: once the heat limit is hit, cool down this far before using turbo again. */
 	bool bTurboCooling = false;
+	/** Counts down the skill's minimum rest after letting go of turbo at the limit. */
+	float TurboRestTimer = 0.f;
 	float GreedyTimer = 0.f;
+	/** This jump: off the gas to cool the engine (else the take-off inputs stay held). */
+	bool bAirCoast = true;
 	/**
 	 * Strategy override for validator drive tests and balance checks: 0 = normal, 1 = turbo up to the red line,
 	 * 2 = careful, 3 = hold turbo always (ignores heat), 4 = never turbo. Speed plans are ignored for 1, 3 and 4.

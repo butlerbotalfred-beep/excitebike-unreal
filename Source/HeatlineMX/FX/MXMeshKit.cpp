@@ -354,7 +354,11 @@ namespace MXMeshKit
 			const FName Slot(*FString::Printf(TEXT("Mat%d"), SecIndex));
 			const FPolygonGroupID PG = MD.CreatePolygonGroup();
 			Attr.GetPolygonGroupMaterialSlotNames()[PG] = Slot;
-			SM->GetStaticMaterials().Add(FStaticMaterial(Sec.Material, Slot));
+			FStaticMaterial StaticMat(Sec.Material, Slot);
+			// Runtime meshes skip the editor's UV density pass; without this, texture streaming hits an ensure
+			// in packaged builds. The materials are untextured, so any density will do.
+			StaticMat.UVChannelData = FMeshUVChannelInfo(1.f);
+			SM->GetStaticMaterials().Add(StaticMat);
 
 			Instances.Reset(Buf.Vertices.Num());
 			for (int32 i = 0; i < Buf.Vertices.Num(); ++i)

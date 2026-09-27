@@ -1,9 +1,9 @@
 # Known limitations
 
 ## Verification status
-_Last updated 2026-09-25 (Unreal Engine 5.8.3 on macOS 26.6, M4 Max). See [TESTING.md](TESTING.md) for the numbers._
+_Last updated 2026-09-27 (Unreal Engine 5.8.3 on macOS 26.6, M4 Max). See [TESTING.md](TESTING.md) for the numbers._
 
-* **Compiled and run in the engine.** It compiles with no errors or warnings, and all 10 automation tests
+* **Compiled and run in the engine.** It compiles with no errors or warnings, and all 11 automation tests
   pass. Every scripted end-to-end scenario passes: 4-player loop, keyboard + 3 pads, Designer, menus, and
   camera framing in every layout.
 * **Performance:** 4 local players + 4 AI at 1920×1080 run at 120 fps (the display's refresh) in both
@@ -13,6 +13,12 @@ _Last updated 2026-09-25 (Unreal Engine 5.8.3 on macOS 26.6, M4 Max). See [TESTI
   scenarios. It uses Unreal's default sandbox entitlements, so saves and records live in
   `~/Library/Containers/com.heatlinemx.HeatlineMX`. It is ad-hoc signed and not notarised, so on another
   Mac it needs right-click → Open the first time.
+* **Window only.** The game always opens in a window, 1600×900 or smaller on a smaller screen. There is
+  no full-screen option: on macOS the engine's full-screen start froze at launch (TESTING.md,
+  "Re-run after first play").
+* **Mouse:** the cursor is never locked to the window, shows on menus and hides during a race while it
+  rests. Scripted tests can't move the real cursor, so this, and whether Cmd+Q quits, still need a person
+  to confirm.
 * **Physical controllers have not been tested.** All end-to-end runs use simulated devices through the
   real input routing. The two paired Xbox controllers need a person to run the checklist in TESTING.md §3.
 * **Not yet tested:** real controller disconnects over Bluetooth (the autotest simulates the

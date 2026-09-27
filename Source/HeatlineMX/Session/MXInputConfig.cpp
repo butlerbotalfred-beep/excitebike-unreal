@@ -231,5 +231,6 @@ TArray<FString> UMXInputConfig::DescribeLayout(const FMXControlProfile& P, bool 
 	}
 	Lines.Add(FString::Printf(TEXT("Accelerate: %s   Turbo: %s"), *KeysLabel(S.Accelerate), *KeysLabel(S.Turbo)));
 	Lines.Add(TEXT("In the air: nose up floats, nose down dives"));
+	Lines.Add(TEXT("Turbo heats the engine and does nothing in the air: let go of it in jumps"));
 	return Lines;
 }

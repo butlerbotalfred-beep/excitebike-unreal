@@ -50,9 +50,27 @@ Steering is analog, with light magnetism toward the nearest lane centre.
   * Landing far off the slope's angle crashes you. After a crash, **mash Accelerate** to remount
     sooner.
 
+## Engine heat
+* Turbo heats the engine. The HEAT bar at the bottom of your view shows it, and the red mark on the bar
+  is the warning line. Past it the bar flashes **HOT** and the bike steams. At the end of the bar the
+  engine overheats and the bike stalls for 3.5 s.
+* Use turbo in bursts. Accelerate on its own never overheats.
+* **Turbo does nothing in the air**, but it keeps heating the engine, so let go of it in jumps. Let go of
+  Accelerate too and the engine cools further. That is how expert riders, and the Hard AI, keep using
+  turbo.
+* Cool strips (the arrow tiles) reset the heat to cold when you ride over them on the ground.
+
+The AI follows the same rules. Easy and Medium riders use turbo in bursts and sometimes overheat. Only
+Hard lets go in every jump.
+
 ## Menus
 Menus use the D-pad or left stick (keyboard: arrows or WASD). **A / Enter** confirms, **B / Esc**
 goes back, **Start / P** starts. In the lobby, **LB/RB (Q/E)** change the AI count.
+
+The pause menu (**Start / Esc**) has RESUME, RESTART, QUIT TO LOBBY and **QUIT GAME**.
+
+The mouse isn't used for play. The cursor shows on menus and is never locked to the window. During a race
+it hides once it stops moving over the game, and moving it brings it back.
 
 ## Local multiplayer devices
 * Press **A** (or **Enter** on the keyboard) on any device in the lobby to join. Every device drives

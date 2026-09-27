@@ -96,16 +96,29 @@ every layout.
 ## AI
 | | Easy | Medium | Hard |
 |---|---|---|---|
-| ReactionDelay | 0.35 s | 0.2 s | 0.1 s |
-| LandingErrorDeg | 14 | 7 | 3 |
-| TurboHeatLimit | 60 % | 80 % | 94 % (plans cool strips) |
-| TurboResumeMargin (turbo again once heat is this far below the limit) | 25 % | 15 % | 4 % |
-| LaneHorizon | 25 m | 45 m | 70 m |
-| Flight control (float/scrub choice) | no | yes | yes |
+| ReactionDelay | 0.45 s | 0.25 s | 0.1 s |
+| LandingErrorDeg | 16 | 10 | 3 |
+| TurboHeatLimit | 65 % | 78 % | 94 % (plans cool strips) |
+| TurboResumeMargin (turbo again once heat is this far below the limit) | 25 % | 22 % | 4 % |
+| TurboMinRest (shortest wait before pressing turbo again) | 4.5 s | 0 | 0 |
+| AirCoastChance (per jump: off the gas in the air, which cools the engine) | 0 | 10 % | every jump |
+| LaneHorizon | 20 m | 45 m | 70 m |
+| Flight control (float/scrub choice), FlightPlanChance | no | 20 % of jumps | every jump |
 | MashRate | 4/s | 7/s | 10/s |
-| MistakeRate | 0.12 | 0.05 | 0.015 |
-| GreedyTurboRate (chance per second of riding turbo into the red for up to 6 s) | 0.03 | 0.01 | 0.001 |
+| MistakeRate | 0.15 | 0.05 | 0.015 |
+| GreedyTurboRate (chance per second of riding turbo into the red for up to 6 s) | 0.007 | 0.004 | 0.001 |
 | Chasers | no | yes | yes |
+
+Easy and Medium ride the heat gauge the way people do (changed 2026-09-27 after a player report that the
+AI "used turbo nonstop without overheating"). Turbo comes in bursts. Through a jump they keep holding what
+they held at take-off, as most players do, so a turbo burst goes on heating the engine in the air, where
+turbo does nothing (NES, see RESEARCH_ORIGINAL.md §3). Letting go of everything in the air stops that and
+cools the engine, below the 37.5 % resting heat too. Before this change every level let go in every jump,
+so even Medium had turbo on 83 % of its time on the ground. Only Hard still does. Now Easy has turbo on
+about 40 % of its ground time and Medium about 57 %. Both overheat now and then (visible steam, then a
+stall), and Hard is at about 91 %. A different limit or resume margin cannot lower the share. Above the
+resting heat, turbo heats at 14.7 %/s and cooling runs at 10.7 %/s, so any limit gives the same 42 %
+duty. Easy's minimum rest is what slows it.
 
 Medal targets (`UMXAITuning`): `MedalGoldFactor` 1.03, `MedalSilverFactor` 1.10 and `MedalBronzeFactor`
 1.20, each times `FMXTrackValidator::ReferenceTime` for the layout and lap count. For example, the 2-lap
@@ -121,9 +134,20 @@ looks good with a fixed input can be impossible to line up in time. Barrier whee
 (0.6 input, about 27°). That clears the front-wheel rule without the over-rotation a held full lift causes.
 
 The offline benchmark (8 seeds × 5 courses × 2 layouts, see TESTING.md) gives this order on every layout:
-Hard finishes 0.6–3.9 s ahead of Medium, and Medium 1.5–7.4 s ahead of Easy. Hard never overheated and
-averaged at most 0.4 crashes per race. Easy and Medium make occasional landing, barrier and greedy-turbo
-mistakes.
+Hard finishes 3.5–11.4 s ahead of Medium, and Medium 4.6–9.6 s ahead of Easy. Hard never overheated and
+averaged at most 0.4 crashes per race. Easy averages about 0.5 overheats per race and Medium about 0.35.
+Both also make occasional landing and barrier mistakes.
+
+The levels are calibrated against three player styles in the offline `human` mode (24 seeds × 5 courses).
+Each style is the same AI brain, set up the way people ride: the gas stays held through jumps, and turbo
+comes off at the heat warning. Real players make more mistakes than these styles, so each level is set to be
+slower than the style it is meant for:
+
+| Style | Total over the 5 courses | Matched level | Level's total |
+|---|---|---|---|
+| Novice (turbo off at the 75 % warning, gas held in every jump) | 384.0 s | Easy | 421.0 s (+9.6 %) |
+| Casual (turbo to 85 %, off the gas in 30 % of jumps) | 375.3 s | Medium | 384.9 s (+2.6 %) |
+| Good (turbo to 92 %, off the gas in 90 % of jumps, plans jumps and cool strips) | 352.4 s | Hard | 352.8 s (+0.1 %) |
 
 ## Obstacle profiles
 Heights are in NES rows (0.6 m) and lengths in columns (1.25 m), scaled to each piece's length. The

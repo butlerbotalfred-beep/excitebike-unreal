@@ -211,14 +211,23 @@ struct FMXAISkill
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float TurboHeatLimit = 75.f;
 	/** After reaching the limit, turbo resumes once heat has dropped this far below it (smaller = feathers turbo nearer the red line). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float TurboResumeMargin = 15.f;
+	/** Shortest rest after letting go of turbo at the limit (seconds): people wait a moment before pressing again. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) float TurboMinRest = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) bool bPlansCoolStrips = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float LaneHorizon = 45.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) bool bUsesFlightControl = true;
+	/** With flight control: chance per jump of planning the best nose-up/nose-down input (otherwise it just lines up the landing). */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) float FlightPlanChance = 1.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float MashRate = 7.f;
 	/** Probability per second of a small line mistake (drifting into a worse lane). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float MistakeRate = 0.05f;
 	/** Probability per second of getting greedy with turbo for a few seconds (can overheat). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) float GreedyTurboRate = 0.01f;
+	/**
+	 * Chance per jump of letting off the gas in the air, which cools the engine (an expert NES trick).
+	 * Riders who don't keep holding what they held on take-off, like most people do.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly) float AirCoastChance = 1.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly) bool bChasersAllowed = true;
 };
 

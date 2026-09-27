@@ -9,11 +9,12 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/World.h"
+#include "Framework/Application/SlateApplication.h"
 
 AMXPlayerController::AMXPlayerController()
 {
 	PlayerCameraManagerClass = AMXPlayerCameraManager::StaticClass();
-	bShowMouseCursor = false;
+	bShowMouseCursor = true;
 	bAutoManageActiveCameraTarget = false;
 }
 
@@ -61,9 +62,40 @@ void AMXPlayerController::OnPausePressed()
 	}
 }
 
+void AMXPlayerController::UpdateMouseCursor(float DeltaTime)
+{
+	// The game never uses the mouse. Config/DefaultInput.ini stops the viewport capturing or locking it, so it can
+	// always leave the window; here it is only hidden while it rests over a race.
+	float X = 0.f;
+	float Y = 0.f;
+	const bool bOverGame = GetMousePosition(X, Y);
+	if (bOverGame && FVector2D::DistSquared(FVector2D(X, Y), LastMousePos) > 1.f)
+	{
+		LastMousePos = FVector2D(X, Y);
+		MouseIdleTime = 0.f;
+	}
+	else
+	{
+		MouseIdleTime += DeltaTime;
+	}
+	const AMXGameMode* GM = GetWorld() ? GetWorld()->GetAuthGameMode<AMXGameMode>() : nullptr;
+	const bool bRacing = GM && !GM->IsPaused() && (GM->GetState() == EMXAppState::Race || GM->GetState() == EMXAppState::DesignerTest);
+	const bool bShow = !bRacing || !bOverGame || MouseIdleTime < 2.f;
+	if (bShow != bShowMouseCursor)
+	{
+		SetShowMouseCursor(bShow);
+		// Slate only re-asks for the cursor when the mouse moves or something requests it.
+		if (FSlateApplication::IsInitialized())
+		{
+			FSlateApplication::Get().QueryCursor();
+		}
+	}
+}
+
 void AMXPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
+	UpdateMouseCursor(DeltaTime);
 	UEnhancedPlayerInput* EPI = Cast<UEnhancedPlayerInput>(PlayerInput);
 	if (!EPI)
 	{

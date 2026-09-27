@@ -408,7 +408,7 @@ void UMXFrontend::HandleAction(int32 DeviceKey, EMXMenuAction Action)
 	case EMXScreen::Pause:
 	{
 		const bool bDesigner = GM->GetState() == EMXAppState::DesignerTest;
-		const int32 Count = 3;
+		const int32 Count = 4;
 		if (GM->LostDeviceSlot() != INDEX_NONE)
 		{
 			break; // waiting for a controller (handled by the game mode)
@@ -434,6 +434,10 @@ void UMXFrontend::HandleAction(int32 DeviceKey, EMXMenuAction Action)
 			{
 				GM->ReturnToLobby();
 			}
+		}
+		else if (Action == EMXMenuAction::Confirm && PauseIndex == 3)
+		{
+			UKismetSystemLibrary::QuitGame(GM, nullptr, EQuitPreference::Quit, false);
 		}
 		break;
 	}
@@ -996,7 +1000,7 @@ void UMXFrontend::DrawPause(UCanvas* C, float U)
 	MXDraw::Rect(C, W * 0.5f - PW * 0.5f, H * 0.5f - PH * 0.5f, PW, PH, FLinearColor(0.05f, 0.06f, 0.08f, 0.92f));
 	MXDraw::Text(C, FString::Printf(TEXT("PAUSED%s"), PausedBySlot >= 0 ? *FString::Printf(TEXT(" (P%d)"), PausedBySlot + 1) : TEXT("")), W * 0.5f, H * 0.5f - PH * 0.5f + 20.f * U, 56.f * U, FLinearColor::White, 0.5f, 0.f);
 	const bool bDesigner = GM->GetState() == EMXAppState::DesignerTest;
-	const TArray<FString> Items = {TEXT("RESUME"), TEXT("RESTART"), bDesigner ? TEXT("BACK TO DESIGNER") : TEXT("QUIT TO LOBBY")};
+	const TArray<FString> Items = {TEXT("RESUME"), TEXT("RESTART"), bDesigner ? TEXT("BACK TO DESIGNER") : TEXT("QUIT TO LOBBY"), TEXT("QUIT GAME")};
 	const float X = W * 0.5f - 180.f * U;
 	DrawList(C, Items, PauseIndex, X, H * 0.5f - PH * 0.5f + 130.f * U, 40.f * U, U);
 }

@@ -360,8 +360,72 @@ static int RunChoices()
 	return Bad;
 }
 
+// Player styles vs the AI levels (argv: human [seeds]). The player rows are the AI brain set up to ride the way
+// people do: they hold the gas through jumps and let go of turbo when the heat warning shows. Real players make
+// more mistakes than these rows, so each AI level should be clearly slower than the player style it is meant for.
+static FMXAISkill PlayerStyle(int Level)
+{
+	FMXAISkill S;
+	S.bChasersAllowed = false;
+	S.GreedyTurboRate = 0.f;
+	S.bPlansCoolStrips = false;
+	S.bUsesFlightControl = false;
+	S.AirCoastChance = 0.f;
+	S.ReactionDelay = 0.3f; S.LandingErrorDeg = 10.f; S.TurboHeatLimit = 75.f; S.TurboResumeMargin = 25.f; S.LaneHorizon = 25.f; S.MashRate = 5.f; S.MistakeRate = 0.08f;
+	if (Level >= 1) { S.ReactionDelay = 0.25f; S.LandingErrorDeg = 7.f; S.TurboHeatLimit = 85.f; S.TurboResumeMargin = 20.f; S.LaneHorizon = 35.f; S.MistakeRate = 0.05f; S.AirCoastChance = 0.3f; }
+	if (Level >= 2) { S.ReactionDelay = 0.15f; S.LandingErrorDeg = 4.f; S.TurboHeatLimit = 92.f; S.TurboResumeMargin = 10.f; S.LaneHorizon = 50.f; S.MistakeRate = 0.02f; S.AirCoastChance = 0.9f; S.bUsesFlightControl = true; S.bPlansCoolStrips = true; }
+	return S;
+}
+
+static int RunHuman(int Seeds)
+{
+	const UMXBikeTuning& T = MXTuning::Bike();
+	TArray<FMXTrackDefinition> Courses = LoadCourses("courses.txt");
+	const TArray<FMXAIOtherBike> None;
+	const char* Names[6] = {"player: novice", "player: casual", "player: good", "AI Easy", "AI Medium", "AI Hard"};
+	const FMXAISkill Skills[6] = {PlayerStyle(0), PlayerStyle(1), PlayerStyle(2), MXTuning::AI().Easy, MXTuning::AI().Medium, MXTuning::AI().Hard};
+	float Total[6] = {0, 0, 0, 0, 0, 0};
+	std::printf("  %-15s %8s %7s %9s %8s %8s  per course (s)\n", "rider", "total s", "turbo%", "overheat", "crashes", "perfect");
+	for (int R = 0; R < 6; ++R)
+	{
+		float Ground = 0, TurboGround = 0, Air = 0, CoastAir = 0;
+		int Over = 0, Crash = 0, Perfect = 0, Landings = 0;
+		std::string PerCourse;
+		for (const FMXTrackDefinition& D : Courses)
+		{
+			FMXTrackModel M;
+			M.Build(D, EMXLayoutVariant::Main, D.Laps, MXTuning::Style());
+			float Sum = 0.f;
+			for (int Seed = 0; Seed < Seeds; ++Seed)
+			{
+				FMXBikeState St; FMXBikeSim::Spawn(St, -2.f, M.LaneCenterY(Seed % 4), M);
+				FMXAIMemory Mem; Mem.Init(500 + Seed * 13 + R, false);
+				float Time = 0.f;
+				while (St.S < M.RaceFinishS() && Time < 400.f)
+				{
+					const FMXBikeInput In = FMXAIBrain::Think(St, Mem, M, T, Skills[R], None, FMXBikeSim::FixedDt);
+					if (St.Phase == EMXBikePhase::Grounded) { Ground += FMXBikeSim::FixedDt; TurboGround += In.bTurbo ? FMXBikeSim::FixedDt : 0.f; }
+					if (St.Phase == EMXBikePhase::Airborne) { Air += FMXBikeSim::FixedDt; CoastAir += (In.Throttle < 0.1f && !In.bTurbo) ? FMXBikeSim::FixedDt : 0.f; }
+					FMXBikeSim::Step(St, In, M, T, FMXBikeSim::FixedDt, false);
+					Time += FMXBikeSim::FixedDt;
+				}
+				Sum += Time; Over += St.Overheats; Crash += St.Crashes; Perfect += St.PerfectLandings; Landings += St.Landings;
+			}
+			Total[R] += Sum / Seeds;
+			char Buf[16]; std::snprintf(Buf, sizeof(Buf), " %6.1f", Sum / Seeds); PerCourse += Buf;
+		}
+		const float Races = float(Seeds * Courses.Num());
+		std::printf("  %-15s %8.1f %6.0f%% %9.2f %8.2f %7.0f%% %s  (off the gas %.0f%% of air time)\n", Names[R], Total[R], 100.f * TurboGround / std::max(0.01f, Ground),
+			Over / Races, Crash / Races, 100.f * Perfect / std::max(1, Landings), PerCourse.c_str(), 100.f * CoastAir / std::max(0.01f, Air));
+	}
+	std::printf("\n  AI Easy vs novice %+.1f%%, AI Medium vs casual %+.1f%%, AI Hard vs good %+.1f%% (positive = AI slower)\n",
+		100.f * (Total[3] / Total[0] - 1.f), 100.f * (Total[4] / Total[1] - 1.f), 100.f * (Total[5] / Total[2] - 1.f));
+	return 0;
+}
+
 int main(int argc, char** argv)
 {
+	if (argc > 1 && std::string(argv[1]) == "human") { return RunHuman(argc > 2 ? std::atoi(argv[2]) : 8); }
 	if (argc > 1 && std::string(argv[1]) == "choices") { return RunChoices(); }
 	if (argc > 1 && std::string(argv[1]) == "pack") { return RunPack(argc > 2 ? std::atoi(argv[2]) : 6); }
 	if (argc > 7 && std::string(argv[1]) == "trace") { return RunTrace(std::atoi(argv[2]), std::atoi(argv[3]), std::atoi(argv[4]), std::atoi(argv[5]), std::atof(argv[6]), std::atof(argv[7])); }
@@ -574,6 +638,39 @@ int main(int argc, char** argv)
 		FMXValidationResult DV;
 		FMXTrackValidator::DriveTest(D, DV);
 		for (const FMXTrackIssue& I : DV.Issues) { std::printf("  drive-test %s: [%d] %s %s\n", *D.Name, (int)I.Severity, *I.Message, *I.SegmentId); }
+	}
+	std::printf("== AI turbo like a person (HeatlineMX.AI.TurboLikeAPerson)\n");
+	for (int Diff = 0; Diff < 3; ++Diff)
+	{
+		const FMXAISkill& Skill = MXTuning::AI().ForDifficulty((EMXAIDifficulty)Diff);
+		float Ground = 0, TurboGround = 0, Air = 0, CoastAir = 0;
+		int Overheats = 0;
+		for (int Course = 1; Course <= 5; ++Course)
+		{
+			const FMXTrackDefinition& D = Courses[Course - 1];
+			FMXTrackModel M;
+			M.Build(D, EMXLayoutVariant::Main, D.Laps, MXTuning::Style());
+			for (int Seed = 0; Seed < 2; ++Seed)
+			{
+				FMXBikeState St; FMXBikeSim::Spawn(St, -2.f, M.LaneCenterY(Seed), M);
+				FMXAIMemory Mem; Mem.Init(300 + Course * 10 + Seed, false);
+				float Time = 0.f;
+				while (St.S < M.RaceFinishS() && Time < 300.f)
+				{
+					const FMXBikeInput In = FMXAIBrain::Think(St, Mem, M, T, Skill, None, FMXBikeSim::FixedDt);
+					if (St.Phase == EMXBikePhase::Grounded) { Ground += FMXBikeSim::FixedDt; TurboGround += In.bTurbo ? FMXBikeSim::FixedDt : 0.f; }
+					else if (St.Phase == EMXBikePhase::Airborne) { Air += FMXBikeSim::FixedDt; CoastAir += In.Throttle < 0.1f ? FMXBikeSim::FixedDt : 0.f; }
+					FMXBikeSim::Step(St, In, M, T, FMXBikeSim::FixedDt, false);
+					Time += FMXBikeSim::FixedDt;
+				}
+				Overheats += St.Overheats;
+			}
+		}
+		const float TurboShare = TurboGround / std::max(0.01f, Ground), CoastShare = CoastAir / std::max(0.01f, Air);
+		std::printf("  AI%d: turbo on %.0f%% of ground time, off the gas %.0f%% of air time, %d overheats in 10 races\n", Diff, TurboShare * 100.f, CoastShare * 100.f, Overheats);
+		if (Diff == 0) { EXPECT(TurboShare < 0.55f && CoastShare < 0.01f && Overheats > 0, "easy AI: turbo bursts, gas on in the air, overheats sometimes"); }
+		else if (Diff == 1) { EXPECT(TurboShare < 0.7f && CoastShare < 0.3f, "medium AI: turbo bursts, rarely cools in the air"); }
+		else { EXPECT(CoastShare > 0.9f, "hard AI cools in every jump"); }
 	}
 	std::printf("\n%d passed, %d failed\n", GPass, GFail);
 	return GFail ? 1 : 0;

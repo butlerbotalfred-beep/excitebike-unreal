@@ -1,4 +1,5 @@
 #include "Session/MXGameInstance.h"
+#include "Session/MXGameUserSettings.h"
 #include "Track/MXCourseLibrary.h"
 #include "Core/MXTuning.h"
 #include "HeatlineMX.h"
@@ -14,6 +15,10 @@ namespace
 void UMXGameInstance::Init()
 {
 	Super::Init();
+	if (UMXGameUserSettings* Settings = UMXGameUserSettings::Get())
+	{
+		Settings->FitWindowToScreen();
+	}
 	MXTuning::LoadAssets();
 	Courses = NewObject<UMXCourseLibrary>(this);
 	Courses->Initialize();

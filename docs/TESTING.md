@@ -19,23 +19,29 @@ Heatline MX has four kinds of testing. They prove different things and are repor
 editor or engine. That covers types, tuning, the obstacle library, the track model, the validator, the
 bike sim, the AI and contact. It runs the same checks as the automation tests, validation and physics
 drive tests of all five NES courses, and AI races on both layouts of every course.
-`run.sh ai 8` runs the multi-seed AI benchmark; `run.sh trace …` prints a step trace of one AI run.
+`run.sh ai 8` runs the multi-seed AI benchmark; `run.sh trace …` prints a step trace of one AI run;
+`run.sh human 24` races three player styles against each AI level (TUNING.md, "AI").
 This checks the simulation only; rendering, input, UI and Unreal integration are not covered.
 
-Latest offline results (2026-09-24, before the engine install):
-- 84 checks passed, 0 failed. All five courses validate, and the drive test flags no impossible pieces.
+Latest offline results (2026-09-27, after the AI turbo change):
+- 87 checks passed, 0 failed. All five courses validate, and the drive test flags no impossible pieces.
+  The 3 new checks mirror `HeatlineMX.AI.TurboLikeAPerson`.
 - AI benchmark, 8 seeds per cell. Mean race times in seconds for 2 laps:
 
 | Course / layout | Easy | Medium | Hard | Hard crashes / overheats per race |
 |---|---|---|---|---|
-| 1 challenge / main | 65.5 / 71.6 | 61.6 / 68.0 | 60.5 / 66.0 | 0 / 0 |
-| 2 challenge / main | 58.2 / 64.6 | 56.7 / 60.8 | 54.3 / 58.9 | 0 / 0 |
-| 3 challenge / main | 73.1 / 77.6 | 68.5 / 73.0 | 66.3 / 71.1 | 0 / 0 |
-| 4 challenge / main | 82.0 / 91.3 | 75.8 / 85.1 | 71.9 / 83.7 | 0–0.12 / 0 |
-| 5 challenge / main | 75.3 / 77.1 | 67.9 / 71.9 | 66.3 / 71.3 | 0–0.38 / 0 |
+| 1 challenge / main | 69.3 / 76.0 | 64.7 / 71.1 | 60.4 / 65.3 | 0 / 0 |
+| 2 challenge / main | 64.0 / 68.8 | 58.4 / 63.9 | 54.7 / 58.9 | 0 / 0 |
+| 3 challenge / main | 77.2 / 85.9 | 70.0 / 76.3 | 66.5 / 70.8 | 0 / 0 |
+| 4 challenge / main | 88.9 / 100.6 | 79.3 / 95.2 | 72.0 / 83.8 | 0–0.25 / 0 |
+| 5 challenge / main | 83.8 / 87.7 | 77.1 / 81.5 | 66.1 / 71.8 | 0–0.38 / 0 |
 
-  Easy averages 0–0.6 crashes and 0.1–0.6 overheats per race; Medium averages 0–0.1 crashes and 0–0.5
-  overheats, mostly from the greedy-turbo mistake.
+  Easy averages 0–0.6 crashes and 0.1–0.8 overheats per race; Medium averages 0–0.6 crashes and 0.1–0.5
+  overheats. Easy has turbo on about 40 % of its time on the ground, Medium about 57 %, and Hard about 91 %.
+  Hard's times are unchanged. The 2026-09-24 run had Easy at 58–91 s and Medium at 57–85 s, before
+  they stopped using the expert cooling trick.
+- Player styles vs AI levels (`run.sh human 24`): Easy is 9.6 % slower than the novice style, Medium 2.6 %
+  slower than the casual style, and Hard level with the good style. The table is in TUNING.md.
 - Turbo choices (`run.sh choices`): the Hard AI's rider logic with the turbo policy overridden, main
   layouts, averaged over the four start lanes. Holding turbo all the time is never the answer: it
   overheats 1.5–3 times per race and loses 4.5–8.7 s to heat management. Never using turbo loses
@@ -51,10 +57,16 @@ Latest offline results (2026-09-24, before the engine install):
 | 5 | 69.8 | 70.8 | 73.2 (1.5) | 82.0 |
 
 - 8-bike AI races with contact (`run.sh pack 6`; main layouts, mixed difficulties, 6 races per course).
-  Every rider finished every race. Contact crashes were 0.2–0.7 per race, and a rider was
-  contact-crashed at most twice in a race (the 6 s cooldown spaces them out). Hard won 26 of 30 races
-  and Medium 4.
+  Every rider finished every race. Contact crashes were 0–1.2 per race, 1.8 in total across the five
+  courses (2.0 before the AI turbo change). No rider was contact-crashed more than once in a race. Hard won
+  all 30 races; before the change Hard won 26 and Medium 4.
 - What the check found and fixed:
+  - (2026-09-27, from a player: "all the AI racers use turbo nonstop without overheating, so I cannot keep
+    up") Every AI level let go of turbo and the gas in every jump, an expert NES trick most players never
+    use. It also rode turbo to a precise heat limit. So Medium had turbo on 83 % of its ground time and was 4–6 %
+    faster than a human-style rider who never overheats. Easy and Medium now keep holding through jumps,
+    use turbo in bursts and sometimes overheat. They are calibrated against player styles with the new
+    `human` mode.
   - The steep ramp launched at over 60°, giving a 9.5 m apex. Fixed by a plain peak profile plus `MaxLaunchAngle`.
   - Hard was slower than Medium on some courses. Mid-air plans could not be lined up in time, and
     riders swerved into barrier lanes too late. Fixed by choosing air plans through physics rollouts,
@@ -88,6 +100,7 @@ Latest offline results (2026-09-24, before the engine install):
 | `HeatlineMX.Track.NESCourses` | All five courses load with 2 laps, and main and challenge lap lengths match the manifest. IDs are stable and there are no validation errors. |
 | `HeatlineMX.Track.Validator` | Start-zone, overlap, lap-end and missing-finish errors are reported, and auto-fix adds a finish. Lane-separated surfaces are allowed. JSON round-trips. |
 | `HeatlineMX.AI.CompletesCourse` | Easy, Medium and Hard AI each finish Course 1 on the same physics. Hard beats Easy on skill alone. |
+| `HeatlineMX.AI.TurboLikeAPerson` | Over 10 races (five courses × 2 seeds): Easy has turbo on under 55 % of its ground time, never lets go in the air and overheats at least once. Medium stays under 70 % and lets go in under 30 % of its air time. Hard lets go in over 90 % of its air time. |
 
 ## 2. Simulated-input scenarios
 | Scenario | Steps and checks |
@@ -182,3 +195,36 @@ includes that wait.
 10. **Bad dialog on first run:** the first game launch hit a blocking Xcode dialog ("missing Metal
    Toolchain"). macOS installs it on demand; the scripted runs now pass `-unattended` so a dialog
    can't stall them.
+
+### Re-run after first play (2026-09-27)
+The first person to play the packaged game found four problems:
+1. **Full screen froze at launch.** Opened without arguments, the game used the engine's default
+   (windowed full screen). The game thread then waited forever in `FMacWindow::WaitForFullScreenTransition`.
+   Every earlier scripted run passed `-windowed`, so none hit it. The game now uses its own settings class
+   (`UMXGameUserSettings`) and starts in a 1600×900 window, shrunk if the screen is smaller. The engine
+   reads the window mode before any game code runs, so the values live in
+   `Config/DefaultGameUserSettings.ini` under the new class's section. Settings saved by earlier builds,
+   which asked for full screen, are ignored.
+2. **The mouse was hidden and locked to the window**, so it was hard to leave the game. Unreal's
+   defaults capture and lock the mouse on click, and the game hid the cursor everywhere. Now the mouse
+   is never captured or locked (`Config/DefaultInput.ini`). The cursor shows on menus and hides during a
+   race only while it rests over the game. The pause menu also gained QUIT GAME.
+3. **"The AI uses turbo nonstop without overheating."** See §0: Easy and Medium now ride like people and
+   sometimes overheat.
+4. **A handled ensure** (`UVChannelData.bInitialized`) appeared once per run in every packaged run, the
+   earlier ones included. It was missed then because it doesn't stop the game. Runtime-built meshes now set
+   their UV channel data.
+
+| Suite | Result |
+|---|---|
+| Compile | Succeeds, 0 errors, 0 warnings |
+| Automation tests | 11/11 pass (new: `HeatlineMX.AI.TurboLikeAPerson`) |
+| `loop` / `loopkb` / `designer` / `menus` (editor binary) | 24/24 / 24/24 / 15/15 / 7/7 |
+| Packaged `loop` / `menus` | 24/24 / 7/7, and no ensure in either log |
+| Packaged app opened with no arguments (`open Build/Mac/HeatlineMX.app`) | Reaches the main menu in about 7 s at 1600 wide, with no freeze and no ensure |
+
+Not re-run this time: `perf` and `shots`. Nothing that affects rendering changed, apart from one more
+line in the start-of-race controls reminder, which was checked in the 4-player screenshot.
+
+Not verified, because it needs a person: how the real cursor looks and moves (scripted input never moves
+the OS cursor), and whether Cmd+Q quits.
